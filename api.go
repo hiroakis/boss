@@ -39,7 +39,7 @@ func (self *API) addLabels(labels []string) error {
 		return err
 	}
 	if r.StatusCode != 200 {
-		return fmt.Errorf("Code: %d Limit: %s %s %s", r.StatusCode, r.Header.Get("X-Ratelimit-Limit"), r.Header.Get("X-RateLimit-Remaining"))
+		return fmt.Errorf("Code: %d Limit: %s %s", r.StatusCode, r.Header.Get("X-Ratelimit-Limit"), r.Header.Get("X-RateLimit-Remaining"))
 	}
 	return nil
 }
@@ -74,7 +74,7 @@ func (self *API) addAssignees(assignees []string) error {
 		return err
 	}
 	if r.StatusCode != 201 {
-		return fmt.Errorf("Code: %d Limit: %s %s %s", r.StatusCode, r.Header.Get("X-Ratelimit-Limit"), r.Header.Get("X-RateLimit-Remaining"))
+		return fmt.Errorf("Code: %d Limit: %s %s", r.StatusCode, r.Header.Get("X-Ratelimit-Limit"), r.Header.Get("X-RateLimit-Remaining"))
 	}
 
 	// fmt.Println(data)
