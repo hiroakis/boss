@@ -72,12 +72,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(500)
+		return
 	}
 
 	webhookEvent, err := parse(body)
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(500)
+		return
 	}
 
 	if _, ok := config.RepoConfigs[webhookEvent.RepoFullName]; !ok {
