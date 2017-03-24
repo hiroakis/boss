@@ -1,0 +1,24 @@
+
+repos:
+  hiroakis/boss:
+    token: abcdefghij1234567890abcdefghij1234567890
+    members:
+      - hiroakis
+      - zawinul
+      - jarrett
+      - corea
+      - hancock
+    labels:
+      - Enhancement
+      - waiting for review
+  hiroakis/twitter-streaming:
+    token: abcdefghij1234567890abcdefghij1234567890
+    members:
+      - hiroakis
+      - jaco
+      - mingus
+      - collins
+      - flea
+      - marcus
+    labels:
+      - waiting for review
