@@ -121,6 +121,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(500)
 			return
 		}
+		comment := fmt.Sprintf("Boss assigns @%s to this pull request.", assignees[i])
+		if err := api.createComment(comment); err != nil {
+			fmt.Println(err)
+			w.WriteHeader(500)
+			return
+		}
 	}
 
 	labels := config.RepoConfigs[webhookEvent.RepoFullName].Labels

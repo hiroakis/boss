@@ -81,3 +81,32 @@ func (self *API) addAssignees(assignees []string) error {
 
 	return nil
 }
+
+/*
+POST /repos/:owner/:repo/issues/:number/comments
+
+{
+  "body": "Me too"
+}
+*/
+func (self *API) createComment(comment string) error {
+
+	payload := struct {
+		Body string `json:"body"`
+	}{Body: comment}
+
+	reqUri := "/repos/" + self.WebHookEvent.RepoFullName + "/issues/" + fmt.Sprintf("%.0f", self.WebHookEvent.Number) + "/comments"
+	req, err := self.Client.NewRequest("POST", reqUri, payload)
+	if err != nil {
+		return err
+	}
+
+	r, err := self.Client.Do(req, nil)
+	if err != nil {
+		return err
+	}
+	if r.StatusCode != 201 {
+		return fmt.Errorf("Code: %d Limit: %s %s", r.StatusCode, r.Header.Get("X-Ratelimit-Limit"), r.Header.Get("X-RateLimit-Remaining"))
+	}
+	return nil
+}
