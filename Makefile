@@ -5,7 +5,10 @@ IMAGE_TAG = latest
 deps:
 	go get -u gopkg.in/yaml.v2
 
-build: deps
+lint:
+	go vet ./...
+
+build: deps lint
 	GOOS=linux GOARCH=386 go build -ldflags "-s -w" -o $(APP_NAME)
 
 run: deps
