@@ -54,10 +54,7 @@ func parse(body interface{}) (WebhookEvent, error) {
 }
 
 func isPullRequestEvent(xGitHubEvent string) bool {
-	if xGitHubEvent == "pull_request" {
-		return true
-	}
-	return false
+	return xGitHubEvent == "pull_request"
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
